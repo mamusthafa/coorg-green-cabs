@@ -27,7 +27,7 @@
         h1, h2, h3 { font-family: 'Poppins', sans-serif; letter-spacing: -0.03em; }
         a { text-decoration: none; }
         .page-wrap { min-height: 100vh; padding-bottom: 118px; }
-        .navbar-lite { padding: 24px 0 18px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+        .navbar-lite { padding: 24px 0 18px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
         .brand-lockup, .nav-menu a, .route-list li { display: inline-flex; align-items: center; }
         .brand-lockup { gap: 0.9rem; color: var(--ink); }
         .brand-badge { width: 56px; height: 56px; border-radius: 18px; display: grid; place-items: center; background: linear-gradient(135deg, #22c55e, #14532d); color: #fff; font-size: 1.5rem; box-shadow: 0 16px 40px rgba(22, 163, 74, 0.2); }
@@ -37,6 +37,7 @@
         .nav-menu { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.55rem; }
         .nav-menu a { gap: 0.4rem; padding: 0.68rem 0.9rem; border-radius: 999px; background: rgba(255, 255, 255, 0.78); color: var(--brand-green-dark); font-size: 0.92rem; font-weight: 800; box-shadow: 0 12px 26px rgba(8, 28, 21, 0.07); }
         .nav-menu a.active { color: #fff; background: linear-gradient(135deg, var(--brand-green), var(--brand-green-dark)); }
+        .nav-toggle { width: 48px; height: 48px; display: none; place-items: center; border: 0; border-radius: 16px; background: #ffffff; color: var(--brand-green-dark); font-size: 1.45rem; box-shadow: 0 12px 26px rgba(8, 28, 21, 0.08); }
         .hero-panel, .info-card, .cta-panel { border-radius: 24px; box-shadow: var(--shadow); }
         .hero-panel { overflow: hidden; background: #fff; }
         .hero-copy { padding: clamp(1.5rem, 5vw, 3rem); }
@@ -55,8 +56,8 @@
         .cta-panel { padding: 2rem; background: radial-gradient(circle at top right, rgba(111, 243, 165, 0.24), transparent 36%), linear-gradient(135deg, #0d2f1e, #14532d); color: #fff; }
         .sticky-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 1090; background: rgba(8, 28, 21, 0.92); padding: 0.75rem; }
         .sticky-bar .btn { width: 100%; border-radius: 16px; padding: 0.9rem 1rem; font-weight: 800; }
-        @media (max-width: 991.98px) { .navbar-lite { align-items: flex-start; flex-direction: column; } .hero-image { min-height: 300px; } }
-        @media (max-width: 767.98px) { .nav-menu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; } .nav-menu a { justify-content: center; min-height: 48px; padding: 0.65rem 0.55rem; font-size: 0.82rem; text-align: center; } }
+        @media (max-width: 991.98px) { .navbar-lite { align-items: center; } .nav-menu { display: none; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; } .nav-menu.is-open { display: grid; } .nav-toggle { display: grid; } .hero-image { min-height: 300px; } }
+        @media (max-width: 767.98px) { .nav-menu { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; } .nav-menu a { justify-content: center; min-height: 48px; padding: 0.65rem 0.55rem; font-size: 0.82rem; text-align: center; } }
     </style>
 </head>
 
@@ -69,7 +70,10 @@
                         <div class="brand-badge"><i class="bi bi-car-front-fill"></i></div>
                         <div class="brand-text"><strong>Coorg Green Cabs</strong><span>Local taxi booking across Coorg</span></div>
                     </a>
-                    <nav class="nav-menu" aria-label="Service pages">
+                    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-controls="siteNav" aria-expanded="false">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <nav class="nav-menu" id="siteNav" aria-label="Service pages">
                         <a href="airport-taxi.html"><i class="bi bi-airplane-engines"></i> Airport Taxi</a>
                         <a class="active" href="outstation-trips.html"><i class="bi bi-sign-turn-right-fill"></i> Outstation Trips</a>
                         <a href="local-sightseeing.html"><i class="bi bi-camera2"></i> Local Sightseeing</a>
@@ -142,6 +146,45 @@
     </div>
 
     <div class="sticky-bar"><div class="container"><div class="row g-2"><div class="col-6"><a class="btn btn-success" href="tel:7899324522"><i class="bi bi-telephone-fill me-2"></i>Call</a></div><div class="col-6"><a class="btn btn-light text-success" href="https://wa.me/917899324522?text=Hi%20Coorg%20Green%20Cabs%2C%20I%20need%20outstation%20taxi%20booking." target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2"></i>WhatsApp</a></div></div></div></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var navToggle = document.querySelector('.nav-toggle');
+            var navMenu = document.querySelector('.nav-menu');
+
+            if (!navToggle || !navMenu) {
+                return;
+            }
+
+            var navIcon = navToggle.querySelector('i');
+            var closeNav = function() {
+                navMenu.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                if (navIcon) {
+                    navIcon.className = 'bi bi-list';
+                }
+            };
+
+            navToggle.addEventListener('click', function() {
+                var isOpen = navMenu.classList.toggle('is-open');
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+                if (navIcon) {
+                    navIcon.className = isOpen ? 'bi bi-x-lg' : 'bi bi-list';
+                }
+            });
+
+            navMenu.addEventListener('click', function(event) {
+                if (event.target.closest('a') && window.matchMedia('(max-width: 991.98px)').matches) {
+                    closeNav();
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (!window.matchMedia('(max-width: 991.98px)').matches) {
+                    closeNav();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
