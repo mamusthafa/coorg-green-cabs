@@ -623,6 +623,91 @@
             font-weight: 700;
         }
 
+        .enquiry-section {
+            background:
+                radial-gradient(circle at top left, rgba(111, 243, 165, 0.2), transparent 34%),
+                linear-gradient(180deg, rgba(209, 250, 229, 0.32), rgba(255, 255, 255, 0.96));
+        }
+
+        .enquiry-panel {
+            padding: clamp(1.6rem, 5vw, 3.6rem);
+            border-radius: 28px;
+            background:
+                radial-gradient(circle at bottom right, rgba(111, 243, 165, 0.24), transparent 42%),
+                rgba(255, 255, 255, 0.86);
+            box-shadow: 0 24px 60px rgba(8, 28, 21, 0.1);
+        }
+
+        .enquiry-title {
+            font-size: clamp(2.4rem, 6vw, 5.2rem);
+            line-height: 0.98;
+            color: var(--brand-green-dark);
+        }
+
+        .enquiry-copy {
+            color: var(--brand-green-dark);
+            font-size: clamp(1.15rem, 2.5vw, 1.65rem);
+            line-height: 1.5;
+        }
+
+        .enquiry-form {
+            display: grid;
+            gap: 1.35rem;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 0.65rem;
+            color: #047857;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.98rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .enquiry-control {
+            width: 100%;
+            min-height: 68px;
+            padding: 0 1.25rem;
+            border: 1px solid rgba(8, 28, 21, 0.14);
+            border-radius: 24px;
+            background-color: rgba(255, 255, 255, 0.86);
+            color: var(--brand-green-dark);
+            font-size: 1.08rem;
+            font-weight: 700;
+            outline: 0;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+        }
+
+        select.enquiry-control {
+            appearance: none;
+            background-image: linear-gradient(45deg, transparent 50%, var(--brand-green-dark) 50%), linear-gradient(135deg, var(--brand-green-dark) 50%, transparent 50%);
+            background-position: calc(100% - 28px) 31px, calc(100% - 20px) 31px;
+            background-size: 8px 8px, 8px 8px;
+            background-repeat: no-repeat;
+            padding-right: 3.5rem;
+        }
+
+        .enquiry-control::placeholder {
+            color: rgba(84, 99, 107, 0.65);
+        }
+
+        .enquiry-submit {
+            min-height: 72px;
+            border: 0;
+            border-radius: 999px;
+            color: #fff;
+            background: linear-gradient(135deg, #22c55e, #047857);
+            box-shadow: 0 20px 42px rgba(22, 163, 74, 0.28);
+            font-size: 1.06rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+        }
+
         .text-muted-strong {
             color: var(--muted);
         }
@@ -667,6 +752,10 @@
 
             .tourist-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .enquiry-panel {
+                border-radius: 24px;
             }
         }
 
@@ -735,6 +824,16 @@
 
             .tourist-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .enquiry-control {
+                min-height: 62px;
+                border-radius: 20px;
+                font-size: 1rem;
+            }
+
+            .enquiry-submit {
+                min-height: 64px;
             }
         }
     </style>
@@ -1227,49 +1326,104 @@
                 <div class="tourist-grid">
                     <article class="tourist-card">
                         <h3><i class="bi bi-water"></i> Abbey Falls</h3>
+                        <img src="images/abbey.jpg" alt="" class="img img-fluid mb-2 rounded">
                         <p>A famous waterfall near Madikeri surrounded by coffee estates and green valley views. Best for quick sightseeing and photography.</p>
                         <span class="tourist-meta"><i class="bi bi-clock"></i> Around 30-45 min visit</span>
                     </article>
                     <article class="tourist-card">
                         <h3><i class="bi bi-sunset-fill"></i> Raja's Seat</h3>
+                        <img src="images/rajaseat.jpg" alt="" class="img img-fluid mb-2 rounded">
                         <p>A scenic garden viewpoint in Madikeri, popular for misty valley views, sunrise, sunset, and relaxed evening walks.</p>
                         <span class="tourist-meta"><i class="bi bi-geo-alt-fill"></i> Madikeri town</span>
                     </article>
                     <article class="tourist-card">
                         <h3><i class="bi bi-mountain"></i> Mandalpatti</h3>
+                        <img src="images/mandalpatti.jpg" alt="" class="img img-fluid mb-2 rounded">
                         <p>A hilltop viewpoint known for wide Western Ghats views, cloudy landscapes, and jeep-style adventure routes from Madikeri side.</p>
                         <span class="tourist-meta"><i class="bi bi-car-front-fill"></i> Viewpoint route</span>
                     </article>
                     <article class="tourist-card">
                         <h3><i class="bi bi-tree-fill"></i> Dubare Elephant Camp</h3>
+                        <img src="images/dubare.jpg" alt="" class="img img-fluid mb-2 rounded">
                         <p>A popular family stop near Kushalnagar where visitors can enjoy the riverside setting and learn about elephants.</p>
                         <span class="tourist-meta"><i class="bi bi-people-fill"></i> Family friendly</span>
                     </article>
                     <article class="tourist-card">
                         <h3><i class="bi bi-flower1"></i> Nisargadhama</h3>
+                        <img src="images/nisargadhama.jpg" alt="" class="img img-fluid mb-2 rounded">
                         <p>A peaceful island park near Kushalnagar with bamboo groves, hanging bridge access, and nature walks for all age groups.</p>
                         <span class="tourist-meta"><i class="bi bi-leaf-fill"></i> Nature stop</span>
                     </article>
                     <article class="tourist-card">
                         <h3><i class="bi bi-building-fill"></i> Golden Temple</h3>
+                        <img src="images/goldentemple.jpg" alt="" class="img img-fluid mb-2 rounded">
                         <p>The Namdroling Monastery at Bylakuppe is known for its Tibetan architecture, prayer halls, and calm spiritual atmosphere.</p>
                         <span class="tourist-meta"><i class="bi bi-pin-map-fill"></i> Near Kushalnagar</span>
                     </article>
                     <article class="tourist-card">
                         <h3><i class="bi bi-bank2"></i> Talacauvery</h3>
+                        <img src="images/talacauvery.jpg" alt="" class="img img-fluid mb-2 rounded">
                         <p>A sacred hill destination and the origin point of River Cauvery, usually paired with Bhagamandala in a day trip.</p>
                         <span class="tourist-meta"><i class="bi bi-map-fill"></i> North Coorg route</span>
                     </article>
                     <article class="tourist-card">
                         <h3><i class="bi bi-cloud-fog2-fill"></i> Iruppu Falls</h3>
+                        <img src="images/iruppufalls.jpg" alt="" class="img img-fluid mb-2 rounded">
                         <p>A beautiful waterfall near South Coorg, often visited with Nagarhole, Kutta, and nearby forest-side destinations.</p>
                         <span class="tourist-meta"><i class="bi bi-compass-fill"></i> South Coorg route</span>
                     </article>
                     <article class="tourist-card">
                         <h3><i class="bi bi-cup-hot-fill"></i> Coffee Plantations</h3>
+                        <img src="images/coffeeplantations.jpg" alt="" class="img img-fluid mb-2 rounded">
                         <p>Coorg's estate trails are perfect for visitors who want to experience coffee, pepper, cardamom, and quiet village scenery.</p>
                         <span class="tourist-meta"><i class="bi bi-camera-fill"></i> Scenic experience</span>
                     </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-space pt-0 enquiry-section" id="quick-enquiry">
+            <div class="container">
+                <div class="enquiry-panel">
+                    <div class="row align-items-center g-4 g-lg-5">
+                        <div class="col-lg-5">
+                            <span class="eyebrow"><i class="bi bi-chat-square-text-fill"></i> Quick Enquiry</span>
+                            <h2 class="enquiry-title mt-3 mb-3">Book your taxi today</h2>
+                            <p class="enquiry-copy mb-0">Fast response for sightseeing, airport transfers, and family trips.</p>
+                        </div>
+                        <div class="col-lg-7">
+                            <form class="enquiry-form" id="quickEnquiryForm">
+                                <div class="form-field">
+                                    <label for="tripType">Trip Type</label>
+                                    <select class="enquiry-control" id="tripType" name="tripType" required>
+                                        <option value="" selected disabled>Select Trip Type</option>
+                                        <option value="Airport Taxi">Airport Taxi</option>
+                                        <option value="Outstation Trip">Outstation Trip</option>
+                                        <option value="Local Sightseeing">Local Sightseeing</option>
+                                        <option value="Local Trip">Local Trip</option>
+                                    </select>
+                                </div>
+                                <div class="form-field">
+                                    <label for="pickupLocation">Pickup Location</label>
+                                    <input class="enquiry-control" id="pickupLocation" name="pickupLocation" type="text" placeholder="e.g., Madikeri or Kushalnagar" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="vehicleType">Vehicle</label>
+                                    <select class="enquiry-control" id="vehicleType" name="vehicleType" required>
+                                        <option value="" selected disabled>Select Vehicle</option>
+                                        <option value="Sedan">Sedan</option>
+                                        <option value="Innova">Innova</option>
+                                        <option value="Innova Crysta">Innova Crysta</option>
+                                        <option value="Tempo Traveller">Tempo Traveller</option>
+                                    </select>
+                                </div>
+                                <button class="enquiry-submit" type="submit">
+                                    <i class="bi bi-whatsapp"></i>
+                                    Enquire on WhatsApp
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1421,6 +1575,33 @@
         document.addEventListener('DOMContentLoaded', function() {
             var galleryModal = document.getElementById('galleryModal');
             var galleryCarousel = document.getElementById('galleryCarousel');
+            var enquiryForm = document.getElementById('quickEnquiryForm');
+
+            if (enquiryForm) {
+                enquiryForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    var tripType = document.getElementById('tripType').value;
+                    var pickupLocation = document.getElementById('pickupLocation').value.trim();
+                    var vehicleType = document.getElementById('vehicleType').value;
+
+                    if (!pickupLocation) {
+                        document.getElementById('pickupLocation').focus();
+                        return;
+                    }
+
+                    var message = [
+                        'Hi Coorg Green Cabs, I would like to book a taxi.',
+                        '',
+                        'Trip Type: ' + tripType,
+                        'Pickup Location: ' + pickupLocation,
+                        'Vehicle: ' + vehicleType
+                    ].join('\n');
+                    var whatsAppUrl = 'https://wa.me/917899324522?text=' + encodeURIComponent(message);
+
+                    window.open(whatsAppUrl, '_blank', 'noopener');
+                });
+            }
 
             if (!galleryModal || !galleryCarousel || typeof bootstrap === 'undefined') {
                 return;
